@@ -1,31 +1,30 @@
 import React from "react";
-import { Button } from "@atoms/Button";
+import { Mail, Phone, MessageCircle } from "lucide-react";
+import { ContactInfoBox } from "@atoms/ContactInfoBox";
 import type { ContactSectionProps } from "./ContactSection.types";
 
-/**
- * ContactSection Organism
- *
- * Sección de contacto con CTA (Call to Action).
- * Incluye título, descripción y botón de acción.
- *
- * @component
- */
 export const ContactSection: React.FC<ContactSectionProps> = ({
-  title = "Trabajemos Juntos",
-  description,
-  buttonText = "Enviar Mensaje",
-  onContactClick,
+  email = "cristpry@gmail.com",
+  phone = "+5401172181012",
+  discord = "Guipercrist",
   className = "",
 }) => {
   return (
-    <div className={`max-w-2xl mx-auto text-center ${className}`}>
-      <h2 className="section-title">{title}</h2>
-      <p className="text-lg text-text-primary/80 font-body mb-8">
-        {description}
-      </p>
-      <Button variant="primary" size="large" onClick={onContactClick}>
-        {buttonText}
-      </Button>
+    <div
+      className={`max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl mx-auto text-center px-4 ${className}`}
+    >
+      <h2 className="section-title">Contacto</h2>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
+        <ContactInfoBox label="Email" value={email} icon={Mail} />
+        <ContactInfoBox label="Teléfono" value={phone} icon={Phone} />
+        <ContactInfoBox
+          label="Discord"
+          value={discord}
+          icon={MessageCircle}
+          className="sm:col-span-2 lg:col-span-1"
+        />
+      </div>
     </div>
   );
 };

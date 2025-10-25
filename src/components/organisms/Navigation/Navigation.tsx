@@ -38,7 +38,7 @@ export const Navigation: React.FC<NavigationProps> = ({
           flex 
           ${
             orientation === "horizontal"
-              ? "flex-row gap-5"
+              ? "flex-row gap-2 sm:gap-3 md:gap-4 lg:gap-5"
               : "flex-col space-y-2"
           }
           items-center justify-center
@@ -50,8 +50,8 @@ export const Navigation: React.FC<NavigationProps> = ({
               href={item.href}
               onClick={(e) => handleItemClick(item, e)}
               className={`
-                group relative px-4 py-2 rounded-lg font-body font-medium
-                transition-all duration-300 text-sm sm:text-base
+                group relative px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 rounded-lg font-body font-medium
+                transition-all duration-300 text-xs sm:text-sm md:text-base
                 ${
                   item.isActive
                     ? "text-neon-turquoise"
@@ -60,15 +60,15 @@ export const Navigation: React.FC<NavigationProps> = ({
               `}
             >
               {/* Contenido */}
-              <span className="relative flex items-center space-x-2">
+              <span className="relative flex items-center space-x-1 sm:space-x-2">
                 {item.icon && (
                   <Icon
                     icon={item.icon}
-                    size={18}
-                    className="transition-transform duration-300 group-hover:scale-110"
+                    size={16}
+                    className="transition-transform duration-300 group-hover:scale-110 sm:w-4 sm:h-4 md:w-5 md:h-5"
                   />
                 )}
-                <span>{item.label}</span>
+                <span className="hidden sm:inline">{item.label}</span>
               </span>
             </a>
           </li>

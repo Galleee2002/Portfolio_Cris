@@ -1,7 +1,7 @@
-import type { SkillData } from "@data/skills";
+import type { ToolLogo } from "@data/tools";
 
 export interface SkillsSectionProps {
   title?: string;
-  skills: SkillData[];
+  tools?: ToolLogo[];
   className?: string;
 }

@@ -19,13 +19,13 @@ export const ExperiencesSection: React.FC<ExperiencesSectionProps> = ({
   return (
     <section
       id={id}
-      className={`section-container py-16 md:py-24 ${className}`}
+      className={`section-container py-12 sm:py-16 md:py-20 lg:py-24 ${className}`}
     >
       {/* Title */}
       <h2 className="section-title">{title}</h2>
 
       {/* Timeline Container */}
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto px-4">
         <div className="relative">
           {experiences.map((experience, index) => (
             <TimelineItem

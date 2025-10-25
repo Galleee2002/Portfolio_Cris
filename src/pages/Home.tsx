@@ -9,8 +9,8 @@ import {
   ContactSection,
 } from "@components/organisms";
 import { projects } from "@data/projects";
-import { skills } from "@data/skills";
 import { experiences } from "@data/experiences";
+import { gameDesignTools } from "@data/tools";
 import fotoPerfilImg from "@/assets/images/foto-perfil.jpg";
 
 /**
@@ -55,16 +55,16 @@ const Home: React.FC = () => {
       aboutSection={
         <AboutSection
           paragraphs={[
-            "Game Designer apasionada por crear experiencias interactivas únicas. Especializada en level design, narrativa lúdica y diseño de mecánicas.",
-            "Mi objetivo es diseñar mundos que cautiven y emocionen a los jugadores.",
+            "Soy Cristian Prykhodko, tengo 23 años y estudio Diseño y Programación de Videojuegos en la Escuela Da Vinci. Soy un artista 3D en formación, con experiencia en Autodesk Maya, Substance Painter y Unity, enfocado en modelado, texturizado y programación. Me destaco por mi lógica, resolución de problemas y optimización de procesos creativos. Busco formar parte de un equipo de desarrollo donde pueda aportar calidad visual, eficiencia en la producción y seguir creciendo como profesional en la industria del videojuego.",
           ]}
         />
       }
-      skillsSection={<SkillsSection skills={skills} />}
+      skillsSection={<SkillsSection tools={gameDesignTools} />}
       contactSection={
         <ContactSection
-          description="¿Tienes un proyecto en mente? Me encantaría escuchar sobre él."
-          onContactClick={() => console.log("Contactar clickeado")}
+          email="cristpry@gmail.com"
+          phone="+5401172181012"
+          discord="Guipercrist"
         />
       }
     />

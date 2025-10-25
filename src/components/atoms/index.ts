@@ -14,3 +14,5 @@ export { TechnologyTag } from "./TechnologyTag";
 export type { TechnologyTagProps } from "./TechnologyTag";
 export { PixelBlast } from "./PixelBlast";
 export type { PixelBlastProps, PixelBlastVariant } from "./PixelBlast";
+export { ContactInfoBox } from "./ContactInfoBox";
+export type { ContactInfoBoxProps } from "./ContactInfoBox";

@@ -19,7 +19,7 @@ export const FocusCards: React.FC<FocusCardsProps> = ({
 
   return (
     <div
-      className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${className}`}
+      className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 ${className}`}
     >
       {cards.map((card, index) => (
         <motion.div
@@ -27,7 +27,7 @@ export const FocusCards: React.FC<FocusCardsProps> = ({
           onClick={() => onCardClick?.(index)}
           onMouseEnter={() => setHovered(index)}
           onMouseLeave={() => setHovered(null)}
-          className="relative overflow-hidden rounded-2xl h-80 md:h-96 cursor-pointer"
+          className="relative overflow-hidden rounded-xl sm:rounded-2xl h-72 sm:h-80 md:h-96 cursor-pointer"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
@@ -53,9 +53,9 @@ export const FocusCards: React.FC<FocusCardsProps> = ({
           />
 
           {/* Contenido */}
-          <div className="relative h-full flex flex-col justify-end p-6 z-10">
+          <div className="relative h-full flex flex-col justify-end p-4 sm:p-5 md:p-6 z-10">
             <motion.h3
-              className="font-title text-xl md:text-2xl font-bold text-white mb-2"
+              className="font-title text-lg sm:text-xl md:text-2xl font-bold text-white mb-1.5 sm:mb-2"
               animate={{
                 y: hovered === index ? -10 : 0,
               }}
@@ -67,7 +67,7 @@ export const FocusCards: React.FC<FocusCardsProps> = ({
             {/* Descripción (opcional) */}
             {card.description && (
               <motion.p
-                className="font-body text-sm md:text-base text-gray-200"
+                className="font-body text-xs sm:text-sm md:text-base text-gray-200"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{
                   opacity: hovered === index ? 1 : 0,
@@ -82,7 +82,7 @@ export const FocusCards: React.FC<FocusCardsProps> = ({
 
           {/* Borde con efecto glow en hover */}
           <motion.div
-            className="absolute inset-0 rounded-2xl border-2"
+            className="absolute inset-0 rounded-xl sm:rounded-2xl border-2"
             animate={{
               borderColor:
                 hovered === index

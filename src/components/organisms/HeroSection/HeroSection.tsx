@@ -21,17 +21,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   className = "",
 }) => {
   return (
-    <div className={`flex flex-col items-center gap-6 ${className}`}>
+    <div
+      className={`flex flex-col items-center gap-4 sm:gap-5 md:gap-6 px-4 ${className}`}
+    >
       {avatarSrc && (
-        <div className="mb-4">
+        <div className="mb-2 sm:mb-3 md:mb-4">
           <Avatar src={avatarSrc} alt={avatarAlt} size="xl" />
         </div>
       )}
-      <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-title font-bold text-center leading-tight">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-title font-bold text-center leading-tight">
         {title}
       </h1>
       <h2
-        className="text-xl sm:text-2xl lg:text-3xl font-body text-center max-w-4xl leading-relaxed"
+        className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-body text-center max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl leading-relaxed px-4"
         style={{
           color: "#00E8FF",
           textShadow:
@@ -40,7 +42,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       >
         {subtitle}
       </h2>
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 w-full sm:w-auto px-4">
         <Button variant="secondary" onClick={onViewProjects}>
           Ver Proyectos
         </Button>

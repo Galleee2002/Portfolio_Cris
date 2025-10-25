@@ -65,39 +65,39 @@ h6 {
 @layer components {
   /* Botón principal con efecto neón */
   .btn-primary {
-    @apply bg-neon-turquoise text-tech-black font-semibold px-6 py-2.5 rounded-lg 
+    @apply bg-neon-turquoise text-tech-black font-semibold rounded-lg 
            transition-all duration-300 transform;
-    box-shadow: 0 0 20px rgba(0, 255, 240, 0.3);
+    box-shadow: 0 0 15px rgba(0, 255, 240, 0.3);
   }
 
   .btn-primary:hover {
     background-color: rgba(0, 255, 240, 0.8);
     transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(0, 255, 240, 0.5);
+    box-shadow: 0 0 25px rgba(0, 255, 240, 0.5);
   }
 
   /* Botón secundario con efecto neón fucsia */
   .btn-secondary {
-    @apply bg-neon-fuchsia text-text-primary font-semibold px-6 py-2.5 rounded-lg 
+    @apply bg-neon-fuchsia text-text-primary font-semibold rounded-lg 
            transition-all duration-300 transform;
-    box-shadow: 0 0 20px rgba(255, 0, 200, 0.3);
+    box-shadow: 0 0 15px rgba(255, 0, 200, 0.3);
   }
 
   .btn-secondary:hover {
     background-color: rgba(255, 0, 200, 0.8);
     transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(255, 0, 200, 0.5);
+    box-shadow: 0 0 25px rgba(255, 0, 200, 0.5);
   }
 
   /* Card elevada con fondo oscuro */
   .card {
-    @apply bg-elevated-surface rounded-xl p-6 border border-neon-turquoise/20 
+    @apply bg-elevated-surface rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 border border-neon-turquoise/20 
            shadow-lg transition-all duration-300;
   }
 
   .card:hover {
     border-color: rgba(0, 255, 240, 0.4);
-    box-shadow: 0 0 20px rgba(0, 255, 240, 0.1);
+    box-shadow: 0 0 15px rgba(0, 255, 240, 0.1);
   }
 
   /* Efecto de vidrio con toque gaming */
@@ -113,13 +113,13 @@ h6 {
 
   /* Contenedor centrado estándar */
   .section-container {
-    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+    @apply container mx-auto px-4 sm:px-5 md:px-6 lg:px-8;
   }
 
   /* Título de sección con gradiente */
   .section-title {
     font-family: "Orbitron", system-ui, sans-serif;
-    @apply text-4xl sm:text-5xl font-bold mb-12 text-center;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 sm:mb-10 md:mb-12 text-center;
     background: linear-gradient(to right, #00fff0, #ff00c8);
     -webkit-background-clip: text;
     background-clip: text;
@@ -130,7 +130,7 @@ h6 {
 
   /* Grid de iconos sociales */
   .social-icon {
-    @apply w-10 h-10 flex items-center justify-center rounded-lg 
+    @apply w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg 
            bg-neon-turquoise/10 border border-neon-turquoise/30 
            hover:bg-neon-turquoise/20 hover:border-neon-turquoise/50 
            transition-all duration-300;

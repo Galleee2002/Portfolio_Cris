@@ -38,9 +38,8 @@ export const Header: React.FC<HeaderProps> = ({
         ${className}
       `}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo opcional */}
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-18 md:h-20">
           {logo && (
             <div
               className="flex items-center cursor-pointer group"
@@ -49,12 +48,11 @@ export const Header: React.FC<HeaderProps> = ({
               <img
                 src={logo}
                 alt={`${designerName} Logo`}
-                className="h-10 w-auto transition-transform duration-300 group-hover:scale-110"
+                className="h-8 sm:h-9 md:h-10 w-auto transition-transform duration-300 group-hover:scale-110"
               />
             </div>
           )}
 
-          {/* Navigation integrada */}
           {navigationItems.length > 0 && (
             <Navigation
               items={navigationItems}

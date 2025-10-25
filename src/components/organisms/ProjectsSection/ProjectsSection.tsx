@@ -2,17 +2,12 @@ import React from "react";
 import { FocusCards } from "@molecules/FocusCards";
 import type { ProjectsSectionProps } from "./ProjectsSection.types";
 
-/**
-
- * @component
- */
 export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   title = "Proyectos Destacados",
   projects,
   onProjectClick,
   className = "",
 }) => {
-  // Transformar los proyectos al formato de FocusCards
   const focusCardsData = projects.map((project) => ({
     title: project.title,
     description: project.description,

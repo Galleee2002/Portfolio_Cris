@@ -9,6 +9,8 @@
 
 export { FocusCards } from "./FocusCards";
 export type { FocusCardsProps, FocusCard } from "./FocusCards";
+export { LogoLoop } from "./LogoLoop";
+export type { LogoLoopProps, LogoItem } from "./LogoLoop";
 export { ProjectCard } from "./ProjectCard";
 export type { ProjectCardProps } from "./ProjectCard";
 export { SkillCard } from "./SkillCard";

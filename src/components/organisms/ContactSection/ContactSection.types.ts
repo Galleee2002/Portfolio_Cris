@@ -1,7 +1,6 @@
 export interface ContactSectionProps {
-  title?: string;
-  description: string;
-  buttonText?: string;
-  onContactClick?: () => void;
+  email?: string;
+  phone?: string;
+  discord?: string;
   className?: string;
 }

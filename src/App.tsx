@@ -16,18 +16,10 @@ import { PixelBlast } from "@/components/atoms";
 import type { NavigationItem } from "./components";
 import Home from "./pages/Home";
 
-/**
- * App Component
- *
- * Componente raíz de la aplicación que utiliza Atomic Design.
- * Utiliza MainLayout con Header y Footer.
- * El contenido principal viene de las páginas (Home).
- */
+
 function App() {
-  // Estado para el item activo de navegación
   const [activeNavItem, setActiveNavItem] = useState("hero");
 
-  // Items de navegación con iconos de Lucide
   const navigationItems: NavigationItem[] = [
     {
       id: "hero",
@@ -73,14 +65,12 @@ function App() {
     },
   ];
 
-  // Handler para cambiar el item activo
   const handleNavItemClick = (item: NavigationItem) => {
     setActiveNavItem(item.id);
   };
 
   return (
     <div className="relative min-h-screen">
-      {/* Fondo animado con PixelBlast - z-index bajo */}
       <div className="fixed inset-0 w-full h-full z-0">
         <PixelBlast
           variant="circle"
@@ -103,7 +93,6 @@ function App() {
         />
       </div>
 
-      {/* Contenido principal - con pointer-events solo en elementos interactivos */}
       <div
         className="relative z-10 **:pointer-events-auto"
         style={{ pointerEvents: "none" }}

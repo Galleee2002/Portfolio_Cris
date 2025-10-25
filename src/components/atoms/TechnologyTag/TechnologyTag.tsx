@@ -46,13 +46,13 @@ export const TechnologyTag: React.FC<TechnologyTagProps> = ({
 
   return (
     <span
-      className={`px-3 py-1.5 text-sm md:text-base rounded-full font-body font-medium transition-all duration-300 cursor-default ${className}`}
+      className={`px-2 py-1 sm:px-2.5 sm:py-1.5 md:px-3 text-xs sm:text-sm md:text-base rounded-full font-body font-medium transition-all duration-300 cursor-default ${className}`}
       style={{
         backgroundColor: colors.bg,
         color: colors.text,
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = `0 0 20px rgba(${rgbGlow}, 0.6), 0 0 30px rgba(${rgbGlow}, 0.4)`;
+        e.currentTarget.style.boxShadow = `0 0 15px rgba(${rgbGlow}, 0.5), 0 0 25px rgba(${rgbGlow}, 0.3)`;
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.boxShadow = "none";

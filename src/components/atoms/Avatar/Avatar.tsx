@@ -16,10 +16,10 @@ export const Avatar: React.FC<AvatarProps> = ({
   className = "",
 }) => {
   const sizeClasses = {
-    sm: "w-16 h-16",
-    md: "w-24 h-24",
-    lg: "w-32 h-32",
-    xl: "w-40 h-40",
+    sm: "w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16",
+    md: "w-20 h-20 sm:w-22 sm:h-22 md:w-24 md:h-24",
+    lg: "w-28 h-28 sm:w-30 sm:h-30 md:w-32 md:h-32",
+    xl: "w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40",
   };
 
   return (

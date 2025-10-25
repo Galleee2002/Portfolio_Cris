@@ -22,7 +22,9 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
   className = "",
 }) => {
   return (
-    <div className={`relative pl-8 pb-12 ${className}`}>
+    <div
+      className={`relative pl-6 sm:pl-8 md:pl-10 pb-8 sm:pb-10 md:pb-12 ${className}`}
+    >
       {/* Dot */}
       <TimelineDot isActive={isActive} />
 
@@ -30,17 +32,17 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
       <TimelineLine isLast={isLast} />
 
       {/* Content */}
-      <div className="space-y-2">
+      <div className="space-y-1.5 sm:space-y-2">
         {/* Title & Company */}
         <div>
           <TimelineText variant="title">{experience.title}</TimelineText>
-          <TimelineText variant="subtitle" className="block mt-1">
+          <TimelineText variant="subtitle" className="block mt-0.5 sm:mt-1">
             {experience.company}
           </TimelineText>
         </div>
 
         {/* Period & Location */}
-        <div className="flex flex-wrap gap-2 md:gap-4">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 md:gap-4">
           <TimelineText variant="caption" className="flex items-center gap-1">
             <span className="text-neon-turquoise">📅</span>
             {experience.period}
@@ -54,13 +56,13 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
         </div>
 
         {/* Description */}
-        <TimelineText variant="body" className="block pt-1">
+        <TimelineText variant="body" className="block pt-0.5 sm:pt-1">
           {experience.description}
         </TimelineText>
 
         {/* Technologies */}
         {experience.technologies && experience.technologies.length > 0 && (
-          <div className="flex flex-wrap gap-2 pt-2">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1.5 sm:pt-2">
             {experience.technologies.map((tech, index) => (
               <TechnologyTag key={index} technology={tech} />
             ))}

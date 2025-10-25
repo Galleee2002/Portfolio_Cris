@@ -20,21 +20,23 @@ export const SkillCard: React.FC<SkillCardProps> = ({
     <div className={`card text-center ${className}`}>
       {/* Icono */}
       {icon && (
-        <div className="mb-4 flex justify-center">
+        <div className="mb-3 sm:mb-4 flex justify-center">
           <Icon
             icon={icon}
-            size={48}
-            className="text-neon-turquoise"
+            size={40}
+            className="text-neon-turquoise sm:w-12 sm:h-12 md:w-14 md:h-14"
             ariaLabel={title}
           />
         </div>
       )}
 
       {/* Contenido */}
-      <h3 className="text-xl font-title font-bold mb-2 text-neon-turquoise">
+      <h3 className="text-lg sm:text-xl md:text-2xl font-title font-bold mb-1.5 sm:mb-2 text-neon-turquoise">
         {title}
       </h3>
-      <p className="text-text-primary/60 font-body text-sm">{description}</p>
+      <p className="text-text-primary/60 font-body text-xs sm:text-sm md:text-base">
+        {description}
+      </p>
     </div>
   );
 };

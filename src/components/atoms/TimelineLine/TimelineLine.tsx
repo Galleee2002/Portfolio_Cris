@@ -17,7 +17,7 @@ export const TimelineLine: React.FC<TimelineLineProps> = ({
 
   return (
     <div
-      className={`absolute left-0 top-8 bottom-0 w-0.5 bg-linear-to-b from-neon-turquoise via-neon-fuchsia to-neon-turquoise opacity-50 ${className}`}
+      className={`absolute left-0 top-6 sm:top-7 md:top-8 bottom-0 w-0.5 bg-linear-to-b from-neon-turquoise via-neon-fuchsia to-neon-turquoise opacity-40 sm:opacity-50 ${className}`}
       aria-hidden="true"
     />
   );

@@ -30,7 +30,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
       {header && <header className="w-full">{header}</header>}
 
       {/* Main Content Section con padding para compensar el header fixed */}
-      <main className="flex-1 w-full pt-20">{children}</main>
+      <main className="flex-1 w-full pt-16 sm:pt-18 md:pt-20">{children}</main>
 
       {/* Footer Section */}
       {footer && <footer className="w-full">{footer}</footer>}
