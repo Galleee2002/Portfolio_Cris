@@ -1,0 +1,347 @@
+# Reglas del Proyecto - Portfolio de Diseño de Videojuegos
+
+## Arquitectura: Atomic Design
+
+Este proyecto sigue estrictamente la metodología **Atomic Design** de Brad Frost. Todos los componentes deben organizarse siguiendo esta jerarquía:
+
+### 1. ÁTOMOS (Atoms)
+
+**Ubicación:** `src/components/atoms/`
+
+- Son los bloques de construcción más pequeños e indivisibles
+- Elementos HTML básicos estilizados (botones, inputs, iconos, etiquetas)
+- No contienen lógica de negocio compleja
+- Son altamente reutilizables
+- Ejemplos: `Button`, `Icon`, `Input`, `Label`, `Image`, `Heading`
+
+**Reglas:**
+
+- Un átomo NO puede importar otros átomos, moléculas, organismos o templates
+- Solo puede usar elementos HTML nativos y estilos
+- Debe ser agnóstico del contexto de negocio
+- Props claras y específicas
+
+### 2. MOLÉCULAS (Molecules)
+
+**Ubicación:** `src/components/molecules/`
+
+- Grupos de átomos que forman componentes funcionales simples
+- Empiezan a tener un propósito específico
+- Ejemplos: `SearchBar` (Input + Button), `CardHeader` (Image + Heading), `FormField` (Label + Input)
+
+**Reglas:**
+
+- Pueden importar SOLO átomos
+- NO pueden importar otras moléculas, organismos o templates
+- Mantienen lógica simple y específica
+- Son reutilizables en diferentes contextos
+
+### 3. ORGANISMOS (Organisms)
+
+**Ubicación:** `src/components/organisms/`
+
+- Componentes complejos formados por moléculas y/o átomos
+- Secciones distintas de la interfaz
+- Pueden contener lógica de negocio
+- Ejemplos: `Header`, `ProjectCard`, `ContactForm`, `GameShowcase`
+
+**Reglas:**
+
+- Pueden importar átomos y moléculas
+- NO pueden importar otros organismos ni templates
+- Pueden contener estado local
+- Pueden conectarse a hooks y contextos
+
+### 4. TEMPLATES (Templates)
+
+**Ubicación:** `src/components/templates/`
+
+- Estructuras de página que definen el layout
+- Combinan organismos para crear estructuras
+- Definen la distribución de contenido
+- Ejemplos: `HomeTemplate`, `ProjectTemplate`, `AboutTemplate`
+
+**Reglas:**
+
+- Pueden importar átomos, moléculas y organismos
+- NO contienen datos reales, solo estructura
+- Reciben datos como props
+- Definen la disposición general
+
+### 5. PÁGINAS (Pages)
+
+**Ubicación:** `src/pages/`
+
+- Instancias específicas de templates con datos reales
+- Nivel más alto de la jerarquía
+- Conectan con servicios y datos
+- Ejemplos: `HomePage`, `ProjectDetailPage`, `AboutPage`
+
+**Reglas:**
+
+- Pueden importar cualquier nivel anterior
+- Manejan el fetching de datos
+- Conectan con el router
+- Pasan datos a los templates
+
+---
+
+## Estructura de Carpetas Obligatoria
+
+```
+src/
+├── components/
+│   ├── atoms/
+│   │   ├── Button/
+│   │   │   ├── Button.tsx
+│   │   │   ├── Button.types.ts
+│   │   │   └── index.ts
+│   │   ├── Icon/
+│   │   ├── Input/
+│   │   └── ...
+│   ├── molecules/
+│   │   ├── SearchBar/
+│   │   ├── CardHeader/
+│   │   └── ...
+│   ├── organisms/
+│   │   ├── Header/
+│   │   ├── Footer/
+│   │   ├── ProjectCard/
+│   │   └── ...
+│   ├── templates/
+│   │   ├── HomeTemplate/
+│   │   ├── ProjectTemplate/
+│   │   └── ...
+│   └── index.ts
+├── pages/
+│   ├── HomePage/
+│   ├── ProjectDetailPage/
+│   └── ...
+├── hooks/
+│   └── useCustomHook.ts
+├── contexts/
+│   └── ThemeContext.tsx
+├── utils/
+│   └── helpers.ts
+├── types/
+│   └── global.types.ts
+├── services/
+│   └── api.service.ts
+├── assets/
+│   ├── images/
+│   └── icons/
+├── styles/
+│   └── globals.css
+└── App.tsx
+```
+
+---
+
+## Reglas de Código TypeScript + React
+
+### 1. TypeScript
+
+- **Siempre** tipar props, estados y funciones
+- Crear interfaces en archivos `.types.ts`
+- Usar `type` para uniones y `interface` para objetos
+- Evitar `any`, usar `unknown` si es necesario
+
+### 2. Componentes React
+
+- Usar **functional components** con TypeScript
+- Naming: PascalCase para componentes
+- Un componente por archivo
+- Exportar desde `index.ts` en cada carpeta de componente
+
+### 3. Props
+
+- Siempre definir interface para props
+- Usar destructuring en los parámetros
+- Props opcionales con `?`
+- Valores por defecto cuando sea apropiado
+
+```typescript
+interface ButtonProps {
+  label: string;
+  onClick: () => void;
+  variant?: "primary" | "secondary";
+  disabled?: boolean;
+}
+
+export const Button: React.FC<ButtonProps> = ({
+  label,
+  onClick,
+  variant = "primary",
+  disabled = false,
+}) => {
+  return (
+    <button onClick={onClick} disabled={disabled} className={`btn-${variant}`}>
+      {label}
+    </button>
+  );
+};
+```
+
+### 4. Estilos con Tailwind CSS
+
+- Usar clases utilitarias de Tailwind
+- Crear clases personalizadas en `@layer components` para componentes reutilizables
+- Usar `clsx` o `classnames` para lógica condicional de clases
+- Responsive design: mobile-first approach
+
+**⚠️ REGLAS CRÍTICAS PARA @apply:**
+
+- **NUNCA usar `@apply` con las siguientes utilidades de Tailwind:**
+  - `group` - debe aplicarse directamente en JSX/HTML
+  - `peer` - debe aplicarse directamente en JSX/HTML
+  - `container` - es una clase contenedora especial
+  - Pseudo-clases como `group-hover:`, `peer-checked:`, etc.
+- **SOLO usar `@apply` con clases de utilidad simples** (colores, tamaños, flex, grid, etc.)
+- **Si necesitas `group` o `peer`:** agrégalos directamente en el `className` del JSX
+
+**Ejemplo CORRECTO:**
+
+```css
+/* En CSS */
+.social-icon {
+  @apply w-10 h-10 flex items-center rounded-lg;
+}
+
+/* En JSX */
+<a className="social-icon group">...</a>
+```
+
+**Ejemplo INCORRECTO:**
+
+```css
+/* ❌ NO HACER ESTO */
+.social-icon {
+  @apply w-10 h-10 flex items-center group; /* ❌ group no va aquí */
+}
+```
+
+### 5. Organización de Imports
+
+```typescript
+// 1. React y dependencias externas
+import React, { useState, useEffect } from "react";
+
+// 2. Componentes internos (de menor a mayor nivel)
+import { Button } from "@/components/atoms";
+import { SearchBar } from "@/components/molecules";
+
+// 3. Hooks y contextos
+import { useTheme } from "@/hooks";
+
+// 4. Utils y types
+import { formatDate } from "@/utils";
+import type { ProjectType } from "@/types";
+
+// 5. Estilos y assets
+import "./styles.css";
+import logo from "@/assets/logo.png";
+```
+
+### 6. Nomenclatura
+
+- Componentes: `PascalCase` (Button, ProjectCard)
+- Funciones: `camelCase` (handleClick, fetchData)
+- Constantes: `UPPER_SNAKE_CASE` (MAX_ITEMS, API_URL)
+- Archivos: Igual que el componente principal
+- Props interfaces: `ComponentNameProps`
+
+### 7. Hooks Personalizados
+
+- Prefijo `use` obligatorio
+- Un hook por archivo
+- Retornar objeto o array según convenga
+- Documentar parámetros y retorno
+
+### 8. Performance
+
+- Usar `React.memo()` para componentes que renderizan frecuentemente
+- `useMemo` y `useCallback` cuando sea necesario
+- Lazy loading para rutas: `React.lazy()`
+
+---
+
+## Reglas de Diseño (Portfolio de Videojuegos)
+
+### Tema Visual
+
+- **Dark Mode por defecto:** Fondos oscuros con acentos brillantes
+- **Paleta de colores:** Azules neón, púrpuras, cianes (temática gaming)
+- **Tipografía:** Sans-serif moderna, legible
+- **Animaciones:** Sutiles pero presentes (hover, transitions)
+
+### Principios UX
+
+- **Navegación intuitiva:** Max 3 clicks para cualquier contenido
+- **Carga progresiva:** Skeletons, loaders
+- **Responsive:** Mobile, tablet, desktop
+- **Accesibilidad:** Contraste, aria-labels, navegación por teclado
+
+### Secciones Principales
+
+1. **Hero:** Presentación impactante
+2. **Projects:** Grid/Carousel de proyectos de juegos
+3. **Skills:** Herramientas y tecnologías
+4. **About:** Información personal y filosofía
+5. **Contact:** Formulario o enlaces
+
+---
+
+## Comandos y Buenas Prácticas
+
+### Git
+
+- Commits descriptivos en español
+- Branches por feature: `feature/nombre-componente`
+- No commitear `node_modules/` ni `.env`
+
+### Testing (futuro)
+
+- Tests para componentes críticos
+- Coverage mínimo: 70%
+
+### Code Review
+
+- Antes de merge, verificar:
+  - ✅ Atomic Design respetado
+  - ✅ TypeScript sin errores
+  - ✅ Props tipadas
+  - ✅ Responsive design
+  - ✅ Imports organizados
+  - ✅ Nombres descriptivos
+  - ✅ @apply NO usa group/peer/container
+
+---
+
+## Resumen de Prohibiciones
+
+❌ **NO** importar componentes de niveles superiores a inferiores
+❌ **NO** usar `any` en TypeScript
+❌ **NO** estilos inline extensos (usar Tailwind o clases)
+❌ **NO** lógica de negocio en átomos
+❌ **NO** componentes de más de 250 líneas (refactorizar)
+❌ **NO** ignorar tipado de TypeScript
+❌ **NO** usar `@apply` con `group`, `peer`, `container` o pseudo-clases relacionadas
+
+---
+
+## Resumen de Obligaciones
+
+✅ **SÍ** seguir Atomic Design estrictamente
+✅ **SÍ** tipar todo con TypeScript
+✅ **SÍ** usar Tailwind CSS para estilos
+✅ **SÍ** crear archivos `.types.ts` para interfaces
+✅ **SÍ** exportar desde `index.ts` en carpetas de componentes
+✅ **SÍ** código limpio, legible y documentado
+✅ **SÍ** responsive y accesible
+✅ **SÍ** aplicar `group`/`peer` directamente en JSX cuando sea necesario
+
+---
+
+**Versión:** 1.1  
+**Última actualización:** Octubre 2025  
+**Proyecto:** Portfolio de Diseño de Videojuegos

@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap");
+@import "tailwindcss";
+
+/* 
+  Breakpoints Mobile-First:
+  - Mobile: < 640px (default)
+  - Tablet: sm: 640px, md: 768px
+  - Desktop: lg: 1024px
+*/
+
+/* ================================================
+   Theme Personalized - Tailwind CSS 4
+   ================================================ */
+@theme {
+  /* Colores personalizados */
+  --color-tech-black: #0d0d0d;
+  --color-neon-turquoise: #00fff0;
+  --color-neon-fuchsia: #ff00c8;
+  --color-elevated-surface: #1a1a1a;
+  --color-text-primary: #ffffff;
+
+  /* Fuentes personalizadas */
+  --font-family-title: "Orbitron", system-ui, sans-serif;
+  --font-family-body: "Exo 2", system-ui, sans-serif;
+}
+
+/* ================================================
+   Estilos Base Personalizados
+   ================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Exo 2", system-ui, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0d0d0d;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Orbitron", system-ui, sans-serif;
+  font-weight: 700;
+}
+
+/* ================================================
+   Componentes Personalizados
+   ================================================ */
+@layer components {
+  /* Botón principal con efecto neón */
+  .btn-primary {
+    @apply bg-neon-turquoise text-tech-black font-semibold px-6 py-2.5 rounded-lg 
+           transition-all duration-300 transform;
+    box-shadow: 0 0 20px rgba(0, 255, 240, 0.3);
+  }
+
+  .btn-primary:hover {
+    background-color: rgba(0, 255, 240, 0.8);
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 255, 240, 0.5);
+  }
+
+  /* Botón secundario con efecto neón fucsia */
+  .btn-secondary {
+    @apply bg-neon-fuchsia text-text-primary font-semibold px-6 py-2.5 rounded-lg 
+           transition-all duration-300 transform;
+    box-shadow: 0 0 20px rgba(255, 0, 200, 0.3);
+  }
+
+  .btn-secondary:hover {
+    background-color: rgba(255, 0, 200, 0.8);
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 0, 200, 0.5);
+  }
+
+  /* Card elevada con fondo oscuro */
+  .card {
+    @apply bg-elevated-surface rounded-xl p-6 border border-neon-turquoise/20 
+           shadow-lg transition-all duration-300;
+  }
+
+  .card:hover {
+    border-color: rgba(0, 255, 240, 0.4);
+    box-shadow: 0 0 20px rgba(0, 255, 240, 0.1);
+  }
+
+  /* Efecto de vidrio con toque gaming */
+  .glass-effect {
+    background-color: rgba(26, 26, 26, 0.5);
+    backdrop-filter: blur(12px);
+  }
+
+  /* Link de navegación con hover neón */
+  .link-nav {
+    @apply hover:text-neon-turquoise transition-colors duration-300;
+  }
+
+  /* Contenedor centrado estándar */
+  .section-container {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Título de sección con gradiente */
+  .section-title {
+    font-family: "Orbitron", system-ui, sans-serif;
+    @apply text-4xl sm:text-5xl font-bold mb-12 text-center;
+    background: linear-gradient(to right, #00fff0, #ff00c8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.3;
+    padding-bottom: 0.15em;
+  }
+
+  /* Grid de iconos sociales */
+  .social-icon {
+    @apply w-10 h-10 flex items-center justify-center rounded-lg 
+           bg-neon-turquoise/10 border border-neon-turquoise/30 
+           hover:bg-neon-turquoise/20 hover:border-neon-turquoise/50 
+           transition-all duration-300;
+  }
+}
+
+/* ================================================
+   Utilidades Personalizadas
+   ================================================ */
+@layer utilities {
+  /* Gradiente de texto con colores neón */
+  .text-gradient {
+    background: linear-gradient(to right, #00fff0, #ff00c8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Efecto de brillo neón turquesa */
+  .glow-turquoise {
+    text-shadow: 0 0 10px rgba(0, 255, 240, 0.5),
+      0 0 20px rgba(0, 255, 240, 0.3), 0 0 30px rgba(0, 255, 240, 0.2);
+  }
+
+  /* Efecto de brillo neón fucsia */
+  .glow-fuchsia {
+    text-shadow: 0 0 10px rgba(255, 0, 200, 0.5),
+      0 0 20px rgba(255, 0, 200, 0.3), 0 0 30px rgba(255, 0, 200, 0.2);
+  }
+
+  /* Animación de pulso neón */
+  .pulse-neon {
+    animation: pulse-neon 2s ease-in-out infinite;
+  }
+
+  /* Animación de parpadeo de glow */
+  .pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  /* Fuente de título */
+  .font-title {
+    font-family: "Orbitron", system-ui, sans-serif;
+  }
+
+  /* Fuente de cuerpo */
+  .font-body {
+    font-family: "Exo 2", system-ui, sans-serif;
+  }
+
+  @keyframes pulse-neon {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.3))
+        drop-shadow(0 0 50px rgba(255, 255, 255, 0.2));
+    }
+    50% {
+      filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.5))
+        drop-shadow(0 0 60px rgba(255, 255, 255, 0.3));
+    }
+  }
+}
